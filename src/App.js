@@ -113,7 +113,7 @@ export default function CuteHackedLanding() {
         <h1>
           You've been <span className="pink">cutely hacked</span>..
         </h1>
-        <p className="subtitle">(remember the name: cutie)</p>
+        <p className="subtitle">(remember the name: cutie) Pls click me</p>
 
         <pre className="code-box" onClick={triggerHack}>
 {`// boot sequence: csrf=♥
