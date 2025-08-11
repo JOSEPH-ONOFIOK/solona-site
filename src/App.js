@@ -4,11 +4,8 @@ import "./App.css";
 import bannerImage from "./banner.jpeg";
 
 export default function CuteHackedLanding() {
-  const [stage, setStage] = useState(0);
   const [shaking, setShaking] = useState(false);
   const [glitching, setGlitching] = useState(false);
-  const [sol, setSol] = useState("");
-  const [posted, setPosted] = useState(false);
   const canvasRef = useRef(null);
 
   // Binary rain effect
@@ -57,36 +54,16 @@ export default function CuteHackedLanding() {
     setTimeout(() => setGlitching(false), 2400);
   }
 
-  function nextStage() {
-    setGlitching(true);
-    setTimeout(() => setGlitching(false), 900);
-    setStage((s) => Math.min(4, s + 1));
-  }
-
-  function prevStage() {
-    setStage((s) => Math.max(0, s - 1));
-  }
-
-  function submitPost() {
-    setPosted(true);
-    nextStage();
-  }
-
-  function submitSol() {
-    if (!sol || sol.length < 32) {
-      alert("Please enter a valid Solana address");
-      return;
-    }
-    nextStage();
-  }
-
   const steps = [
     { title: "Follow + turn on notis", btn: "Follow" },
     { title: "Like + RT", btn: "Like + RT" },
     { title: "Make post", btn: "Prepare tweet" },
     { title: "Submit post", btn: "Submit post" },
-    { title: "Submit SOL addy", btn: "Submit" },
   ];
+
+  const redirectToTwitter = () => {
+    window.open("https://twitter.com", "_blank");
+  };
 
   return (
     <div className={`cute-container ${shaking ? "shake" : ""}`}>
@@ -95,7 +72,7 @@ export default function CuteHackedLanding() {
         className={`cute-bg ${shaking ? "shake" : ""}`}
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80')",
+            "",
         }}
         onClick={triggerHack}
       />
@@ -111,84 +88,39 @@ export default function CuteHackedLanding() {
       {/* Main panel */}
       <div className={`cute-panel ${glitching ? "glitch" : ""}`}>
         <h1>
-          You've been <span className="pink">cutely hacked</span>..
+          You've been <span className="pink">hacked MOFO</span>..
         </h1>
-        <p className="subtitle">(remember the name: cutie) Pls click me</p>
+        <p className="subtitle">(remember the name: MOFO) Pls click me</p>
 
         <pre className="code-box" onClick={triggerHack}>
 {`// boot sequence: csrf=♥
-import { follow, like, retweet, postTweet } from 'cute-retard-art'
+import { follow, like, retweet, postTweet } from 'MOFO-retard-art'
 
 async function infect() {
-  await follow('@ProjectCutie')
+  await follow('@ProjectMofo')
   await likeAndRT(latest)
-  const tweet = "I think I've been infected by this cute retarded art. who knows, I might have just gotten a wl, go get yours here -> <link>"
+  const tweet = "I think I've been infected by this retarted MOFO ART. who knows, I may  have just made the mofolist, get yours punk"
   await postTweet(tweet)
 }
 
-infect().then(() => console.log('you are adorable'))`}
+infect().then(() => console.log('you"ve been MOFO hacked'))`}
         </pre>
 
         <div className="steps">
-          {steps.map((s, i) => (
-            <div
-              key={s.title}
-              className={`step ${i === stage ? "active" : ""}`}
-            >
-              <div className="step-title">
-                Step {i + 1}: {s.title}
-              </div>
-              {i < 2 && (
-                <button onClick={() => i === stage && nextStage()}>
-                  {s.btn}
-                </button>
-              )}
-              {i === 2 && (
-                <>
-                  <textarea defaultValue={`I think I've been infected by this cute retarded art. who knows, I might have just gotten a wl, go get yours here -> https://example.com/wl`} />
-                  <button
-                    onClick={() => {
-                      setPosted(false);
-                      nextStage();
-                    }}
-                  >
-                    Prepare
-                  </button>
-                </>
-              )}
-              {i === 3 && (
-                <>
-                  <div className="preview">
-                    I think I've been infected by this cute retarded art. who
-                    knows, I might have just gotten a wl, go get yours here -{" "}
-                    https://example.com/wl
-                  </div>
-                  <button onClick={submitPost}>Submit post</button>
-                </>
-              )}
-              {i === 4 && (
-                <>
-                  <input
-                    value={sol}
-                    onChange={(e) => setSol(e.target.value)}
-                    placeholder="Your SOL public address"
-                  />
-                  <button onClick={submitSol}>Submit</button>
-                </>
-              )}
+          {steps.map((s) => (
+            <div key={s.title} className="step active">
+              <div className="step-title">{s.title}</div>
+              <button onClick={redirectToTwitter}>{s.btn}</button>
             </div>
           ))}
         </div>
 
-        {stage === 4 && (
-          <div className="final-message">
-            you are <span className="pink">cuteeeee</span> 💋💋
-          </div>
-        )}
+        <div className="final-message">
+          you are <span className="pink">adorable</span> 💋💋
+        </div>
 
         <div className="controls">
-          <button onClick={prevStage}>Back</button>
-          <button onClick={() => setStage(0)}>Reset</button>
+          <button onClick={redirectToTwitter}>Go to Twitter</button>
         </div>
       </div>
     </div>
