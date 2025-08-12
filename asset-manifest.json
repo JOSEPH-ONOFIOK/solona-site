@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/solona-site/static/css/main.484fe5b3.css",
-    "main.js": "/solona-site/static/js/main.28429b3b.js",
+    "main.js": "/solona-site/static/js/main.dc541fd7.js",
     "static/media/paint.jpeg": "/solona-site/static/media/paint.bc45ac1323403d693def.jpeg",
     "static/media/banner.jpeg": "/solona-site/static/media/banner.aec6f0c8e1312635bdfe.jpeg",
     "index.html": "/solona-site/index.html",
     "main.484fe5b3.css.map": "/solona-site/static/css/main.484fe5b3.css.map",
-    "main.28429b3b.js.map": "/solona-site/static/js/main.28429b3b.js.map"
+    "main.dc541fd7.js.map": "/solona-site/static/js/main.dc541fd7.js.map"
   },
   "entrypoints": [
     "static/css/main.484fe5b3.css",
-    "static/js/main.28429b3b.js"
+    "static/js/main.dc541fd7.js"
   ]
 }
