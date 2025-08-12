@@ -56,9 +56,9 @@ export default function CuteHackedLanding() {
 
   const steps = [
     { title: "Follow + turn on notis", btn: "Follow" },
-    { title: "Like + RT", btn: "Like + RT" },
-    { title: "Make post", btn: "Prepare tweet" },
-    { title: "Submit post", btn: "Submit post" },
+    { title: "retweet + like", btn: "Like + RT" },
+    // { title: "Make post", btn: "Prepare tweet" },
+    { title: "Submit SOL wallet on this", btn: "Submit post" },
   ];
 
   const redirectToTwitter = () => {
@@ -116,7 +116,7 @@ infect().then(() => console.log('you"ve been MOFO hacked'))`}
         </div>
 
         <div className="final-message">
-          you are <span className="pink">adorable</span> 💋💋
+          you a <span className="pink">SICKO</span> 💋💋
         </div>
 
         <div className="controls">
