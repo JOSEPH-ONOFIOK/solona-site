@@ -62,7 +62,7 @@ export default function CuteHackedLanding() {
   ];
 
   const redirectToTwitter = () => {
-    window.open("https://twitter.com", "_blank");
+    window.open("https://x.com/mofoxyz?s=11", "_blank");
   };
 
   return (
