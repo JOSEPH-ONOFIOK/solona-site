@@ -6,6 +6,8 @@ import bannerImage from "./banner.jpeg";
 export default function CuteHackedLanding() {
   const [shaking, setShaking] = useState(false);
   const [glitching, setGlitching] = useState(false);
+  const [clickedSteps, setClickedSteps] = useState([]); // Track clicked steps
+  const [showModal, setShowModal] = useState(false); // Modal state
   const canvasRef = useRef(null);
 
   // Binary rain effect
@@ -47,6 +49,7 @@ export default function CuteHackedLanding() {
     };
   }, []);
 
+  // Trigger shake/glitch animation
   function triggerHack() {
     setShaking(true);
     setGlitching(true);
@@ -54,13 +57,31 @@ export default function CuteHackedLanding() {
     setTimeout(() => setGlitching(false), 2400);
   }
 
+  // Steps to complete
   const steps = [
     { title: "Follow + turn on notis", btn: "Follow" },
     { title: "retweet + like", btn: "Like + RT" },
-    // { title: "Make post", btn: "Prepare tweet" },
     { title: "Submit SOL wallet on this", btn: "Submit post" },
   ];
 
+  // Handle clicking on step buttons
+  const handleStepClick = (title) => {
+    if (!clickedSteps.includes(title)) {
+      const updatedSteps = [...clickedSteps, title];
+      setClickedSteps(updatedSteps);
+
+      // If all steps clicked, show modal
+      if (updatedSteps.length === steps.length) {
+        setTimeout(() => {
+          setShowModal(true);
+        }, 500);
+      }
+    }
+
+    redirectToTwitter();
+  };
+
+  // Open Twitter link
   const redirectToTwitter = () => {
     window.open("https://x.com/mofoxyz?s=11", "_blank");
   };
@@ -70,10 +91,6 @@ export default function CuteHackedLanding() {
       {/* Background overlay */}
       <div
         className={`cute-bg ${shaking ? "shake" : ""}`}
-        style={{
-          backgroundImage:
-            "",
-        }}
         onClick={triggerHack}
       />
 
@@ -99,30 +116,45 @@ import { follow, like, retweet, postTweet } from 'MOFO-retard-art'
 async function infect() {
   await follow('@ProjectMofo')
   await likeAndRT(latest)
-  const tweet = "I think I've been infected by this retarted MOFO ART. who knows, I may  have just made the mofolist, get yours punk"
+  const tweet = "I think I've been infected by this retarted MOFO ART. who knows, I may have just made the mofolist, get yours punk"
   await postTweet(tweet)
 }
 
 infect().then(() => console.log('you"ve been MOFO hacked'))`}
         </pre>
 
+        {/* Steps list */}
         <div className="steps">
           {steps.map((s) => (
             <div key={s.title} className="step active">
               <div className="step-title">{s.title}</div>
-              <button onClick={redirectToTwitter}>{s.btn}</button>
+              <button onClick={() => handleStepClick(s.title)}>
+                {s.btn}
+              </button>
             </div>
           ))}
         </div>
-
-        <div className="final-message">
-          you a <span className="pink">SICKO</span> 💋💋
-        </div>
-
-        <div className="controls">
-          <button onClick={redirectToTwitter}>Go to Twitter</button>
-        </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2 className="modal-title">
+              you may have successfully been white listed mofo
+            </h2>
+            <div className="final-message">
+              you a <span className="pink">SICKO</span> 💋💋
+            </div>
+            <div className="controls">
+              <button onClick={redirectToTwitter}>Go to Twitter</button>
+            </div>
+            <button className="close-btn" onClick={() => setShowModal(false)}>
+              ✖
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
