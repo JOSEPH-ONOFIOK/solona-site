@@ -360,3 +360,32 @@ button:hover {
     opacity: 1;
   }
 }
+.checkmark {
+  color: #00ff99;
+  margin-left: 5px;
+  font-size: 0.85em;
+  animation: checkmarkPop 0.3s ease-out;
+}
+
+@keyframes checkmarkPop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.step.done {
+  border-color: #00ff99 !important;
+  background: rgba(0, 255, 153, 0.15);
+  transform: scale(1.05);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.step.done button {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

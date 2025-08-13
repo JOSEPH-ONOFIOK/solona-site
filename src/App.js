@@ -126,9 +126,20 @@ infect().then(() => console.log('you"ve been MOFO hacked'))`}
         {/* Steps list */}
         <div className="steps">
           {steps.map((s) => (
-            <div key={s.title} className="step active">
-              <div className="step-title">{s.title}</div>
-              <button onClick={() => handleStepClick(s.title)}>
+            <div
+              key={s.title}
+              className={`step ${clickedSteps.includes(s.title) ? "done" : ""}`}
+            >
+              <div className="step-title">
+                {s.title}{" "}
+                {clickedSteps.includes(s.title) && (
+                  <span className="checkmark">✔</span>
+                )}
+              </div>
+              <button
+                onClick={() => handleStepClick(s.title)}
+                disabled={clickedSteps.includes(s.title)}
+              >
                 {s.btn}
               </button>
             </div>
