@@ -57,15 +57,15 @@ export default function CuteHackedLanding() {
     setTimeout(() => setGlitching(false), 2400);
   }
 
-  // Steps to complete
+  // Steps to complete — each with its own link
   const steps = [
-    { title: "Follow + turn on notis", btn: "Follow" },
-    { title: "retweet + like", btn: "Like + RT" },
-    { title: "Submit SOL wallet on this", btn: "Submit post" },
+    { title: "Follow + turn on notis", btn: "Follow", link: "https://x.com/mofoxyz?s=11" },
+    { title: "retweet + like", btn: "Like + RT", link: "https://x.com/mofoxyz/status/1955667829870436834?s=46" },
+    { title: "Submit SOL wallet on this", btn: "Submit post", link: "https://x.com/mofoxyz/status/1955667829870436834?s=46" },
   ];
 
   // Handle clicking on step buttons
-  const handleStepClick = (title) => {
+  const handleStepClick = (title, link) => {
     if (!clickedSteps.includes(title)) {
       const updatedSteps = [...clickedSteps, title];
       setClickedSteps(updatedSteps);
@@ -78,12 +78,8 @@ export default function CuteHackedLanding() {
       }
     }
 
-    redirectToTwitter();
-  };
-
-  // Open Twitter link
-  const redirectToTwitter = () => {
-    window.open("https://x.com/mofoxyz?s=11", "_blank");
+    // Open specific link for the step
+    window.open(link, "_blank");
   };
 
   return (
@@ -137,7 +133,7 @@ infect().then(() => console.log('you"ve been MOFO hacked'))`}
                 )}
               </div>
               <button
-                onClick={() => handleStepClick(s.title)}
+                onClick={() => handleStepClick(s.title, s.link)}
                 disabled={clickedSteps.includes(s.title)}
               >
                 {s.btn}
@@ -158,7 +154,9 @@ infect().then(() => console.log('you"ve been MOFO hacked'))`}
               you a <span className="pink">SICKO</span> 💋💋
             </div>
             <div className="controls">
-              <button onClick={redirectToTwitter}>Go to Twitter</button>
+              <button onClick={() => window.open("https://x.com/mofoxyz?s=11", "_blank")}>
+                Go to Twitter
+              </button>
             </div>
             <button className="close-btn" onClick={() => setShowModal(false)}>
               ✖
